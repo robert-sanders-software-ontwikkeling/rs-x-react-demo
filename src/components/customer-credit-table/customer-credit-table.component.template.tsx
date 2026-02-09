@@ -32,7 +32,7 @@ const CreditRow: React.FC<CreditRowProps> = ({
       <td>{item.id}</td>
       <td>
         <RsxField
-          expression={`customer.age + ' (' + (customer.age > 40 ? 'becoming old' : 'still young') + ')'`}
+          expression='`${customer.age} (${customer.age > 40 ? "becoming old" : "still young"})`'
           model={item}
         />
       </td>
