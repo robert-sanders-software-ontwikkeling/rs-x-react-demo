@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0);
+  background: rgba(0, 0, 0, 0); /* start transparent for fade-in */
   z-index: 1000;
   pointer-events: none;
   opacity: 0;
@@ -21,14 +21,14 @@
 /* Panel container */
 .panel {
   background: #fff;
-  width: 420px;
+  width: 480px;
   max-width: 95vw;
   border-radius: 14px;
-  padding: 24px 28px;
+  padding: 24px 32px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
   transform: translateY(16px) scale(0.98);
   opacity: 0;
   transition: transform 200ms ease, opacity 200ms ease;
@@ -40,29 +40,44 @@
 }
 
 .panel h3 {
-  margin: 0 0 12px;
-  font-size: 20px;
+  margin: 0;
+  font-size: 22px;
   text-align: center;
+  font-weight: 600;
 }
 
 /* Form layout */
 form {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px 20px;
+  grid-template-columns: 1fr;
+  row-gap: 16px;
 }
 
-/* Form labels */
+/* Fieldsets */
+fieldset {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+legend {
+  font-weight: 600;
+  padding: 0 8px;
+}
+
+/* Labels & Inputs */
 label {
   display: flex;
   flex-direction: column;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left; /* labels aligned left */
+  margin-bottom: 8px;
 }
 
 input {
-  margin-top: 4px;
-  padding: 8px 10px;
+  margin-top: 6px;
+  padding: 8px 12px;
   border-radius: 6px;
   border: 1px solid #ccc;
   font-size: 14px;
@@ -70,33 +85,40 @@ input {
 
 /* Action buttons */
 .actions {
-  grid-column: 1 / -1;
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
-  margin-top: 12px;
+  gap: 12px;
+  margin-top: 16px;
 }
 
-button {
-  padding: 8px 16px;
-  border-radius: 8px;
+/* Save & Cancel buttons */
+.actions button {
+  padding: 8px 18px;
+  border-radius: 6px;
   border: none;
   font-weight: 600;
   cursor: pointer;
-  transition: background 150ms ease;
+  transition: background 150ms ease, transform 100ms ease;
 }
 
-button.secondary {
-  background: #eee;
-}
-
-button.primary {
-  background: #007bff;
+.actions button.save {
+  background-color: #007bff;
   color: white;
 }
 
-button:hover {
+.actions button.cancel {
+  background-color: #eee;
+  color: #333;
+}
+
+.actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.actions button:hover:not(:disabled) {
   opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 /* Validation messages */
@@ -105,7 +127,6 @@ input:invalid {
 }
 
 small {
-  grid-column: 1 / -1;
   font-size: 12px;
   color: #e74c3c;
 }

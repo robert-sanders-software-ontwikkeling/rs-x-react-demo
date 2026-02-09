@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import type { ICustomerCreditRisk } from "../../models/customer-credit-risk.interface";
 
 interface Props {
-  form: ICustomerCreditRisk ;
+  form: ICustomerCreditRisk;
   onSave: () => void;
   onCancel: () => void;
   isValid: boolean;
@@ -17,86 +17,84 @@ export const CustomerCreditTemplate: React.FC<Props> = ({
 }) => {
   const [visible, setVisible] = useState(false);
 
-  // Trigger fade-in when component mounts
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 10); // small delay for transition
+    const timer = setTimeout(() => setVisible(true), 10);
     return () => clearTimeout(timer);
   }, []);
 
-  // Handle closing with fade-out
   const handleCancel = () => {
     setVisible(false);
-    setTimeout(() => onCancel(), 200); // wait for transition
+    setTimeout(() => onCancel(), 200);
   };
 
   useRsxModel(form);
- 
+
   return (
     <div className={`backdrop ${visible ? "visible" : ""}`} onClick={handleCancel}>
       <div className={`panel ${visible ? "visible" : ""}`} onClick={(e) => e.stopPropagation()}>
         <h3>Edit Customer Credit</h3>
 
         <form>
-          {/* CUSTOMER */}
           <fieldset>
             <legend>Customer</legend>
+            <div className="form-grid">
+              <label>
+                <span>Age</span>
+                <input
+                  type="number"
+                  value={form.customer.age}
+                  onChange={(e) => (form.customer.age = Number(e.target.value))}
+                />
+              </label>
 
-            <label>
-              Age
-              <input
-                type="number"
-                value={form.customer.age}
-                onChange={(e) => (form.customer.age = Number(e.target.value))}
-              />
-            </label>
+              <label>
+                <span>Income</span>
+                <input
+                  type="number"
+                  value={form.customer.income}
+                  onChange={(e) => (form.customer.income = Number(e.target.value))}
+                />
+              </label>
 
-            <label>
-              Income
-              <input
-                type="number"
-                value={form.customer.income}
-                onChange={(e) => (form.customer.income = Number(e.target.value))}
-              />
-            </label>
-
-            <label>
-              Employment Years
-              <input
-                type="number"
-                value={form.customer.employmentYears}
-                onChange={(e) => (form.customer.employmentYears = Number(e.target.value))}
-              />
-            </label>
+              <label>
+                <span>Employment Years</span>
+                <input
+                  type="number"
+                  value={form.customer.employmentYears}
+                  onChange={(e) => (form.customer.employmentYears = Number(e.target.value))}
+                />
+              </label>
+            </div>
           </fieldset>
 
-          {/* CREDIT */}
           <fieldset>
             <legend>Credit</legend>
+            <div className="form-grid">
+              <label>
+                <span>Credit Score</span>
+                <input
+                  type="number"
+                  value={form.credit.score}
+                  onChange={(e) => (form.credit.score = Number(e.target.value))}
+                />
+              </label>
 
-            <label>
-              Credit Score
-              <input
-                type="number"
-                value={form.credit.score}
-                onChange={(e) => (form.credit.score = Number(e.target.value))}
-              />
-            </label>
-
-            <label>
-              Outstanding Debt
-              <input
-                type="number"
-                value={form.credit.outstandingDebt}
-                onChange={(e) => (form.credit.outstandingDebt = Number(e.target.value))}
-              />
-            </label>
+              <label>
+                <span>Outstanding Debt</span>
+                <input
+                  type="number"
+                  value={form.credit.outstandingDebt}
+                  onChange={(e) => (form.credit.outstandingDebt = Number(e.target.value))}
+                />
+              </label>
+            </div>
           </fieldset>
 
           <div className="actions">
-            <button type="button" onClick={handleCancel}>
+            <button type="button" className="cancel" onClick={handleCancel}>
               Cancel
             </button>
-            <button type="button" onClick={onSave} disabled={!isValid}>
+            <button type="button" className="save" onClick={onSave} disabled={!isValid}>
               Save
             </button>
           </div>
