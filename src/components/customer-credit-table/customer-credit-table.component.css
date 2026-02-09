@@ -1,0 +1,61 @@
+.customer-credit-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.customer-credit-table th,
+.customer-credit-table td {
+  padding: 12px 14px;
+  text-align: left;
+}
+
+.customer-credit-table thead {
+  background: #f4f6fa;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.customer-credit-table tbody tr {
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.customer-credit-table tbody tr:hover {
+  background: #f9fbff;
+}
+
+.customer-credit-table tbody tr.selected {
+  background: #e6f0ff;
+}
+
+.customer-credit-table input {
+  width: 100%;
+  padding: 4px 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.actions {
+  display: flex;
+  gap: 6px;
+}
+
+.actions button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.actions .danger {
+  color: #c0392b;
+}
+
+.risk {
+  font-weight: 600;
+}
