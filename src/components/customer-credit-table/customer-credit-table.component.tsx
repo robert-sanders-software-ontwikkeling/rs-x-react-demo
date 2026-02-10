@@ -21,7 +21,6 @@ export const CustomerCreditTable: React.FC = () => {
   });
   const model = modelRef.current;
 
-
   const customerCredits = useRsxExpression<ICustomerCreditRisk[]>(
     'customerCredits',
    {model}
