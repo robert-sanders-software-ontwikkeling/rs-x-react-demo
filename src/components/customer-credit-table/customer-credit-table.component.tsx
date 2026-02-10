@@ -44,11 +44,13 @@ export const CustomerCreditTable: React.FC = () => {
 
   const closeEditor = () => model.editing = null;
 
+  const alertDelay = 250;
+
   const save = async (updated: ICustomerCredit) => {
     try {
        model.customerCredits = service.update(updated.id, updated);
       closeEditor();
-      window.setTimeout(() => alert(`Customer credit with ${updated.id} updated successfully.`));
+      window.setTimeout(() => alert(`Customer credit with ${updated.id} updated successfully.`), alertDelay);
 
     } catch (error) {
       alert(`Error updating customer credit with id ${updated.id}: ${error}`);
@@ -61,9 +63,9 @@ export const CustomerCreditTable: React.FC = () => {
       if (model.selected === item) {
         model.selected = null;
       }
-      alert(`Customer credit with id ${item.id} deleted successfully.`);
+       window.setTimeout(() => alert(`Customer credit with id ${item.id} deleted successfully.`), alertDelay);
     } catch (error) {
-      alert(`Error deleting customer credit with id ${item.id}: ${error}`);
+       window.setTimeout(() => alert(`Error deleting customer credit with id ${item.id}: ${error}`), alertDelay);
     }
   };
 
