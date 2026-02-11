@@ -1,7 +1,7 @@
-import React from "react";
-import type { ICustomerCredit, ICustomerCreditRisk } from "../../models/customer-credit-risk.interface";
-import { CustomerCreditTemplate } from "./customer-credit-edit.component.template";
-import "./customer-credit-edit.component.css";
+import React from 'react';
+import type { ICustomerCredit, ICustomerCreditRisk } from '../../models/customer-credit-risk.interface';
+import { CustomerCreditTemplate } from './customer-credit-edit.component.template';
+import './customer-credit-edit.component.css';
 
 interface Props {
   customerCreditRisk: ICustomerCreditRisk;
